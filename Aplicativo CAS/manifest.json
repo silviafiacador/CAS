@@ -1,0 +1,26 @@
+{
+	"short_name": "CAS",
+	"name": "Central de Alunos Senac",
+	"icons": [
+{
+	"src": "/estilo/cas.png",
+	"type": "image/png",
+	"sizes": "48x48"
+} ,
+{
+	"src": "/estilo/cas2x.png",
+	"type": "image/png",
+	"sizes": "96x96"
+} ,
+{
+	"src": "/estilo/cas4x.png",
+	"type": "image/png",
+	"sizes": "192x192"
+} 
+	],
+
+	"start_url":"index.html?launcher=true",
+	"background_color": "#2196F3",
+
+}
+}

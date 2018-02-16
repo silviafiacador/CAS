@@ -1,0 +1,72 @@
+--criação do banco de dados
+create database if not exists cas;
+
+--criação das tabelas com suas respectivas chaves 
+--primárias.
+create table if not exists cas.uc (
+uc varchar(4) not null primary key,
+carga_horaria tinyint not null);
+
+create table if not exists cas.aluno (
+email varchar(100) not null primary key,
+senha varchar(8) not null,
+turma varchar(4) not null);
+
+create table if not exists cas.turma (
+turma varchar(4) not null primary key,
+inicio date not null, 
+termino date not null);
+
+create table if not exists cas.notas_freq (
+email varchar(100) not null,
+uc varchar(4) not null, 
+nota varchar(2),
+faltas tinyint, 
+constraint pk_notas_freq primary key (email, uc));
+
+create table if not exists cas.conteudo (
+data date not null,
+uc varchar(4) not null, 
+turma varchar(4) not null,
+conteudo text,
+constraint pk_conteudo primary key (data,turma));
+
+create table if not exists cas.avisos (
+data date not null,
+hora time not null,
+aviso text not null,
+turma varchar(4) not null,
+constraint pk_aviso primary key (data,hora));
+
+--criando as chaves estrangeiras
+alter table cas.notas_freq add constraint fk_notas_freq foreign key (email) references cas.aluno (email);
+
+alter table cas.notas_freq add constraint fk_uc foreign key (uc) references cas.uc(uc);
+
+alter table cas.aluno add constraint fk_turma foreign key (turma) references cas.turma(turma);
+
+alter table cas.conteudo add constraint fk_turma1
+foreign key (turma) references cas.turma(turma);
+
+alter table cas.avisos add constraint fk_turma2 foreign key (turma) references cas.turma(turma);
+
+insert into turma (turma, inicio, termino) values
+('TI08', '2017-03-01','2018-05-05');
+
+insert into aluno (email, senha, turma) values
+('mateus@hotmail.com', 3333, 'TI08'),
+('veronica@hotmail.com',1543,'TI08');
+
+insert into uc (uc, carga_horaria) values ('UC1',90), ('UC2', 114), ('UC3', 78),('UC4', 32),('UC5', 96),('UC6', 80), ('UC7', 80), ('UC8', 80),
+('UC9', 72), ('UC10', 108), ('UC11', 108), ('UC12', 108), ('UC13', 60), ('UC14', 108), ('UC15', 48),('UC16', 32);
+
+INSERT INTO NOTAS_FREQ (email, faltas, nota , uc) values ('mateus@hotmail.com', 5,'D','UC1'), ('mateus@hotmail.com', 0,'D','UC2'), ('mateus@hotmail.com', 1,'ND','UC3'),
+('veronica@hotmail.com', 15,'D','UC1'), ('veronica@hotmail.com', 2,'D','UC2'), ('veronica@hotmail.com', 10,'ND','UC3'),
+('silviafiacador1608@gmail.com', 15,'D','UC1'), ('silviafiacador1608@gmail.com', 2,'D','UC2'), ('silviafiacador1608@gmail.com', 10,'D','UC3');
+
+
+
+
+
+insert into conteudo (turma, data, uc, conteudo) values ('TI08', '2018-02-09', 'UC1','Projeto');
+

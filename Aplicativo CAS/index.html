@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+	
+	<title>CAS - Central de Aluno Senac</title>
+	<!-- para aparecer o ícone na aba do título -->
+	<link rel="shortcut icon" href="imagens/cas.png">		
+	<!-- nosso css -->
+	<link rel="stylesheet"  href="estilo/estiloCas.css">
+	
+	<!-- bootstrap -->
+	<link href="estilo/bootstrap.min.css" rel="stylesheet">
+	
+</head>
+<body>
+	<header>
+		<h4>Central Aluno Senac</h4><br>
+		<img src="imagens/cas2x.png" alt="Logotipo do aplicativo CAS">
+	</header>
+	<main>
+		<form method="post" action="consulta_usuario.php">
+
+			<p><input type="email" name="femail" class="entrada" placeholder="Nome@outlook.com"></p><br><br>
+
+			<p><input type="password" name="fsenha" class="entrada" placeholder="Senha">
+			</p><br><br>
+			<input type="submit" id="botao" value="LOG IN">
+		</form> 	
+	</main>
+
+</body>
+</html>
+
+
